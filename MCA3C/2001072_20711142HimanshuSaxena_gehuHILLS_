@@ -1,1 +1,44 @@
+#importing matplot and seborn for plot 
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
 
+#reading pollution data
+data = pd.read_csv("pollution.csv")
+data.head(10)
+
+location  month  year  SO2 μg/l  NO2μg/l  PM10 μg/l  \
+0  CLOCK TOWER-DEHRADUN      1  2012     27.33    30.33     193.28   
+1  CLOCK TOWER-DEHRADUN      2  2012     25.68    25.80     173.77   
+2  CLOCK TOWER-DEHRADUN      3  2012     29.64    27.50     211.35   
+3  CLOCK TOWER-DEHRADUN      4  2012     28.64    26.81     230.76   
+4  CLOCK TOWER-DEHRADUN      5  2012     31.09    29.30     310.73   
+5  CLOCK TOWER-DEHRADUN      6  2012     28.73    30.62     200.61   
+6  CLOCK TOWER-DEHRADUN      7  2012     27.55    30.06     129.22   
+7  CLOCK TOWER-DEHRADUN      8  2012     23.04    26.00      78.19   
+8  CLOCK TOWER-DEHRADUN      9  2012     22.22    25.40     108.37   
+9  CLOCK TOWER-DEHRADUN     10  2012     24.40    28.79      21.83   
+
+   PM2.5 μ g/l  CO μg/l  O3 μ g/l 8 HR  NH3  μ g/l     AQI   Air Quality  
+0         60.0        2            100         400  162.19      Moderate  
+1         60.0        2            100         400  149.18      Moderate  
+2         60.0        2            100         400  174.23      Moderate  
+3         60.0        2            100         400  187.17      Moderate  
+4         60.0        2            100         400  260.73          Poor  
+5         60.0        2            100         400  167.07      Moderate  
+6         60.0        2            100         400  119.48      Moderate  
+7         60.0        2            100         400  100.00  Satisfactory  
+8         60.0        2            100         400  105.58      Moderate  
+9         60.0        2            100         400  100.00  Satisfactory
+
+#plotting Histogram
+plt.hist(data['Air Quality'])
+plt.xlabel('NH3 in Air')
+plt.ylabel('Quality Level')
+plt.title("Air Quality with NH3 In Dehradun")
+plt.show()
+
+#plotting Seaborn
+sns.scatterplot(x="NO2μg/l", y="Air Quality", data=data)
+plt.title('Air Quality Of Dehradun')
+plt.show()
